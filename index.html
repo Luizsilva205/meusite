@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <script>
-    // VERIFICAÇÃO DE SEGURANÇA
-    // Se não tiver o token de login, chuta a pessoa de volta para o login.html
-    if (localStorage.getItem("usuario_logado") !== "sim") {
-        window.location.href = "login.html";
-    }
-</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checklist de Estudos - Medicina Pro</title>
@@ -912,19 +905,15 @@
         // saveState(); // We don't save immediately to avoid writes on load, will save on next user action
     }
     
-  function logout() {
-    if(confirm("Tem certeza que deseja sair?")) {
-        const msg = document.getElementById('logoutMessage');
-        msg.style.display = "flex";
-        
-        // Remove a permissão de acesso
-        localStorage.removeItem("usuario_logado");
-        
-        setTimeout(() => {
-            window.location.href = "login.html"; // Redireciona para o login
-        }, 1500);
+    function logout() {
+        if(confirm("Tem certeza que deseja sair?")) {
+            const msg = document.getElementById('logoutMessage');
+            msg.style.display = "flex";
+            setTimeout(() => {
+                location.reload(); 
+            }, 1500);
+        }
     }
-}
 
     function showWelcomeMessage() {
         let nextTaskName = "Revisão Geral";
@@ -2686,5 +2675,3 @@
 </script>
 </body>
 </html>
-
-
